@@ -428,7 +428,7 @@ EzLauncher.NewsSection.ContentFrame.ScrollBarImageColor3 = Color3.fromRGB(112, 1
 EzLauncher.EzLauncher.Enabled = false;
 
 local launcherData = game:GetService("HttpService"):JSONDecode(
-	(game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.com/debug420/Ez-Industries-Launcher-Data/master/LauncherData.json")));
+	(game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.com/Baguettou/Ez-Industries-Launcher-Data/master/LauncherData.json")));
 
 EzLauncher.EzLauncher.Enabled = true;
 
