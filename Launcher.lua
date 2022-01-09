@@ -58,7 +58,7 @@ local EzLauncher = {
 --Properties:
 
 EzLauncher.EzLauncher.Name = "EzLauncher"
-EzLauncher.EzLauncher.Parent = game.CoreGui
+EzLauncher.EzLauncher.Parent = game.Players.WinslowMau.PlayerGui
 EzLauncher.EzLauncher.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 EzLauncher.Frame.Parent = EzLauncher.EzLauncher
@@ -428,7 +428,7 @@ EzLauncher.NewsSection.ContentFrame.ScrollBarImageColor3 = Color3.fromRGB(112, 1
 EzLauncher.EzLauncher.Enabled = false;
 
 local launcherData = game:GetService("HttpService"):JSONDecode(
-	(game:HttpGet("https://raw.githubusercontent.com/debug420/Ez-Industries-Launcher-Data/master/LauncherData.json")));
+	(game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.com/debug420/Ez-Industries-Launcher-Data/master/LauncherData.json")));
 
 EzLauncher.EzLauncher.Enabled = true;
 
@@ -570,7 +570,7 @@ local allowedOverrideUsers = {
 EzLauncher.Launch.MouseButton1Click:Connect(function()
 	
 	-- Check if services are down
-	if not table.find(allowedOverrideUsers, game.Players.LocalPlayer.UserId) and (EzLauncher.EzHubStatusFrame.Status.Text == "Offline" or
+	if not table.find(allowedOverrideUsers, game.Players.WinslowMau.UserId) and (EzLauncher.EzHubStatusFrame.Status.Text == "Offline" or
 	EzLauncher.EzAPIStatusFrame.Status.Text == "Offline" or
 	EzLauncher.EzLauncherStatusFrame.Status.Text == "Offline") then
 		spawn(function()
@@ -585,7 +585,7 @@ EzLauncher.Launch.MouseButton1Click:Connect(function()
 
 	-- Apply the theme before launching Ez Hub
 	_G.EzHubTheme = themes[selectedTheme];
-	loadstring(game:HttpGet(latestVersion))();
+	loadstring(game:GetService("HttpService"):GetAsync(latestVersion))();
 
 	changeElementState(false)
 
